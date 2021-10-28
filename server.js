@@ -2,12 +2,13 @@
 var proxy = require('redbird')({
     port: 80 , 
     xfwd : true ,  // pass client ip address (retrivable via request-ip module)
-    cluster : 4 ,  // cluster proxy on 4 cpu core 
+    cluster : 1 ,  // cluster proxy on 4 cpu core 
     ssl: {
 		port: 443,
 		key: "ssl//azr.local.key",
 		cert: "ssl/azr.local.cer",
-	}
+	},
+    bunyan:{level : 'warn'} // fatal , error , warn , info , debug , trace 
 });
 
 proxy.notFound((req,res)=>{
